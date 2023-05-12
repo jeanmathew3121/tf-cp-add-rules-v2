@@ -26,17 +26,17 @@ output "instance_ip_addr" {
 }
 
 
-resource "checkpoint_management_access_rule" "rule" {
+resource "checkpoint_management_access_rule" "add-rule" {
   layer = "Network"
   position = {above = data.checkpoint_management_data_access_rule.data_access_rule.name}
   name = var.cp-name
   action = var.cp-action
   //action_settings = {
   //  enable_identity_captive_portal = true
-  //}
+  //
   source = [var.cp-source-networks]
   enabled = true
-  destination = [var.destination-networks]
+  destination = [var.cp-destination-networks]
   //destination_negate = true
   service = [var.cp-service]
 }
