@@ -39,6 +39,16 @@ resource "checkpoint_management_access_rule" "add-rule" {
   destination = [var.cp-destination-networks]
   //destination_negate = true
   service = [var.cp-service]
+
+
+  track = {
+    type = "Log"
+    accounting = false
+    alert = "SNMP"
+    enable_firewall_session = false
+    per_connection = true
+    per_session = false
+  }
 }
 
 
